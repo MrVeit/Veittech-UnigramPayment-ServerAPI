@@ -1,5 +1,5 @@
-IMAGE_NAME = unigram-payment_node-server-API
-CONTAINER_NAME = unigram-payment_node-server-API
+IMAGE_NAME = unigram-payment_node-server-api
+CONTAINER_NAME = unigram-payment_node-server-api
 PORT = 1000
 
 build:
@@ -11,7 +11,7 @@ run: build
 stop:
 	docker stop $(CONTAINER_NAME) || true
 
-restart: stop run
+restart: clean run
 
 clean: stop
 	docker rm $(CONTAINER_NAME) || true
