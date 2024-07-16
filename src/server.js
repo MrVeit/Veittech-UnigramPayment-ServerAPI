@@ -2,11 +2,19 @@ const time = require('./timeUtils');
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const https = require('https');
+const fs = require('fs');
 
 require('dotenv').config(); 
 
 const app = express();
 const port = process.env.PORT || 1000;
+
+const optiosn =
+{
+    key: fs.readFileSync('/etc/letsencrypt/private.key'),
+    cert: fs.readFileSync('/etc/letsencypt/certificate.crt')
+};
 
 let latestPaymentDataFromBot = null;
 
@@ -31,7 +39,6 @@ app.get('/api/payment/get-info', (request, result) =>
     result.status(200).json(latestPaymentDataFromBot);
 });
 
-app.listen(port, () => 
-{
+https.createServer(options, app).listen(port, () => {
     console.log(`Server running at ${process.env.SERVER_DOMAIN}:${port}`);
 });
