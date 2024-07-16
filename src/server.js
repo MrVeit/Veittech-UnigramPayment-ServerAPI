@@ -10,10 +10,10 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 1000;
 
-const optiosn =
+const options =
 {
-    key: fs.readFileSync('/etc/letsencrypt/private.key'),
-    cert: fs.readFileSync('/etc/letsencypt/certificate.crt')
+    key: fs.readFileSync('/urs/src/app/cert/private.key'),
+    cert: fs.readFileSync('/urs/src/app/cert/certificate.crt')
 };
 
 let latestPaymentDataFromBot = null;
