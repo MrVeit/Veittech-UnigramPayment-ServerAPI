@@ -28,7 +28,14 @@ async function createInvoice(request, result)
     {
         console.error(`[${time.timestamp}] Error creating invoice:`, error);
 
-        result.status(500).json({ error: 'Internal Server Error' });
+        if (error.response && error.response.data && error.response.data.description)
+        {
+            result.status(error.res.status).json({ error: error.response.data.description });
+        }
+        else
+        {
+            result.status(500).json({ error: 'Internal server error' });
+        }
     }
 }
 
@@ -53,7 +60,14 @@ async function refund(request, result)
     {
         console.error(`[${time.timestamp}] Error processing refund:`, error);
 
-        result.status(500).json({ error: 'Internal Server Error' });
+        if (error.response && error.response.data && error.response.data.description) 
+        {
+            result.status(error.response.status).json({ error: error.response.data.description });
+        } 
+        else 
+        {
+            result.status(500).json({ error: 'Internal server error' });
+        }
     }
 }
 
