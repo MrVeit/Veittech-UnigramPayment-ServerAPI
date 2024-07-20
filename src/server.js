@@ -3,7 +3,6 @@ const payment = require('./paymentAPI');
 const time = require('./timeUtils');
 
 const express = require('express');
-const cors = require('cors');
 const bodyParser = require('body-parser');
 
 require('dotenv').config();
@@ -13,7 +12,6 @@ const port = process.env.PORT || 1000;
 
 let latestPaymentDataFromBot = null;
 
-app.use(cors);
 app.use(bodyParser.json());
 
 app.post('/api/authenticate', bodyParser.text(), (request, result) => 
