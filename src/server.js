@@ -39,7 +39,7 @@ app.get('/api/payment/latest-order-receipt', session.authenticateClient, (reques
     result.status(200).json(latestPaymentDataFromBot);
 });
 
-app.post('/api/payment/order-receipt', session.authenticateBot, (request, result) => 
+app.post('/api/payment/update-order-receipt', session.authenticateBot, (request, result) => 
 {
     latestPaymentDataFromBot = request.body;
         
