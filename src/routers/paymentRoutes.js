@@ -1,6 +1,6 @@
 const { transactionData, transactionStorage } = require('../database/transactionsStorage');
 
-const time = require('./utils/timeUtils');
+const time = require('../utils/timeUtils');
 
 const sessionValidation = require('../handlers/sessionValidation');
 const payment = require('../handlers/paymentApiHelper');
