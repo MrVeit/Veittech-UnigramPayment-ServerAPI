@@ -74,9 +74,8 @@ router.post('/update-order-receipt',
         `${latestReceipt.total_amount}`));
 
     console.log(`[${time.getCurrentTimestamp()}] ` +
-        `Receipt ${lates.telegram_payment_charge_id} ` +
-        `successfully added to temporary storage: ` +
-        `${storage.get(lates.telegram_payment_charge_id)} for user: ${buyerTelegramId}`);
+        `Receipt ${latestReceipt.telegram_payment_charge_id} ` +
+        `successfully added to temporary storage: for user: ${buyerTelegramId}`);
         
     result.sendStatus(200);
 });
