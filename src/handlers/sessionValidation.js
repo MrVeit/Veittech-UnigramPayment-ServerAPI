@@ -9,14 +9,23 @@ function startClientCheckIn(request, result)
 
     if (clientSecretKey === process.env.CLIENT_SECRET_KEY)
     {
-        const token = jwt.sign({ clientId: 'unity-client' },
-             process.env.CLIENT_JWT_SIGN, { expiresIn: '1h' });
+        const token = jwt.sign(
+        {
+            clientId: 'unity-client'
+        },
+        process.env.CLIENT_JWT_SIGN,
+        {
+            expiresIn: '24h'
+        });
 
         result.status(200).json({ token });
     }
     else
     {
-        result.status(401).json({ error: 'Unauthorized client, access denied.' });
+        result.status(401).json(
+        {
+            error: 'Unauthorized client, access denied.'
+        });
     }
 }
 
@@ -26,7 +35,10 @@ function authenticateClient(request, result, next)
 
     if (!authHeader)
     {
-        return result.status(403).json({ error: 'Authorization token for client not detected, access denied.' });
+        return result.status(403).json(
+        {
+            error: 'Authorization token for client not detected, access denied.'
+        });
     }
 
     const token = authHeader.split(' ')[1];
@@ -50,8 +62,10 @@ function authenticateBot(request, result, next)
 
     if (!authHeader)
     {
-        return result.status(403).json({ error: 
-            'Authorization token for bot not detected, access denied.' });
+        return result.status(403).json(
+        {
+            error: 'Authorization token for bot not detected, access denied.'
+        });
     }
 
     const token = authHeader.split(' ')[1];
@@ -60,7 +74,10 @@ function authenticateBot(request, result, next)
 
     if (decryptedToken !== process.env.BOT_TOKEN)
     {
-        return result.status(403).json({ error: 'Unauthorized source request, access denied'});
+        return result.status(403).json(
+        {
+            error: 'Unauthorized source request, access denied'
+        });
     }
 
     next();
