@@ -22,7 +22,7 @@ router.post('/refund',
     await payment.refund(request, result);
 });
 
-router.get('/order-receipt',
+router.post('/order-receipt',
     sessionValidation.authenticateClient,(request, result) => 
 {
     const { userId, itemId } = request.body;
