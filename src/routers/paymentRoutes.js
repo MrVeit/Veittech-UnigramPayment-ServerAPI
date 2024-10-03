@@ -1,5 +1,7 @@
 const { transactionData, transactionStorage } = require('../database/transactionsStorage');
 
+const time = require('./utils/timeUtils');
+
 const sessionValidation = require('../handlers/sessionValidation');
 const payment = require('../handlers/paymentApiHelper');
 
@@ -35,7 +37,7 @@ router.get('/order-receipt',
 
     const loadedTransaction = storage.getByUserIdAndItemId(userId, itemId);
 
-    console.log(JSON.stringify(`Loaded available transaction by filter: ${loadedTransaction}`));
+    console.log(`Loaded available transaction by filter: ${JSON.stringify(loadedTransaction)}`);
 
     if (!loadedTransaction || loadedTransaction.length === 0)
     {
