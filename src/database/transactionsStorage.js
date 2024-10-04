@@ -21,16 +21,21 @@ class transactionStorage
         this.items.push(item);
     }
 
-    delete(item)
+    deleteByItemId(itemId) 
     {
-        var itemId = this.items.indexOf(item);
-
-        delete items[itemId];
+        const itemIndex = this.items.findIndex(
+            item => item.itemId === itemId);
+    
+        if (itemIndex !== -1) 
+        {
+            this.items.splice(itemIndex, 1);
+        }
     }
 
     getByUserIdAndItemId(buyerId, itemId) 
     {
-        return this.items.find(item => item.buyerId === buyerId && item.itemId === itemId);
+        return this.items.find(item => item.buyerId === buyerId 
+            && item.itemId === itemId);
     }
 }
 

@@ -49,7 +49,7 @@ router.post('/order-receipt',
 
     result.status(200).json(loadedTransaction);
 
-    storage.delete(itemId);
+    storage.deleteByItemId(itemId);
 
     console.log(`Item ${itemId} successful deleted from temporary storage`);
 });
