@@ -21,19 +21,11 @@ class transactionStorage
         this.items.push(item);
     }
 
-    get(transactionId)
+    delete(item)
     {
-        return this.items.find(item => item.transactionId === transactionId);
-    }
+        var itemId = this.items.indexOf(item);
 
-    getByUserId(buyerId)
-    {
-        return this.items.filter(item => item.buyerId === buyerId);
-    }
-
-    getByItemId(itemId)
-    {
-        return this.items.filter(item => item.itemId === itemId);
+        delete items[itemId];
     }
 
     getByUserIdAndItemId(buyerId, itemId) 
