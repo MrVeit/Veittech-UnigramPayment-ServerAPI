@@ -2,7 +2,7 @@ IMAGE_NAME = unigram-payment_node-server-api:${VERSION}
 CONTAINER_NAME = unigram-payment_node-server-api_container
 
 PORT = 1000
-VERSION = 1.0.2
+VERSION = 1.0.3
 
 build:
 	docker build -t $(IMAGE_NAME) .
