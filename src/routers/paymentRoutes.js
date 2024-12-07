@@ -37,7 +37,7 @@ router.post('/order-receipt',
 
     const loadedTransaction = storage.getByUserIdAndItemId(userId, itemId);
 
-    console.log(`Loaded available transaction by filter: ${JSON.stringify(loadedTransaction)}`);
+    console.log(`[${time.getCurrentTimestamp()}] Loaded available transaction by filter: ${JSON.stringify(loadedTransaction)}`);
 
     if (!loadedTransaction || loadedTransaction.length === 0)
     {
@@ -51,7 +51,7 @@ router.post('/order-receipt',
 
     storage.deleteByItemId(itemId);
 
-    console.log(`Item ${itemId} successful deleted from temporary storage`);
+    console.log(`[${time.getCurrentTimestamp()}] Item ${itemId} successful deleted from temporary storage`);
 });
 
 router.post('/update-order-receipt',
